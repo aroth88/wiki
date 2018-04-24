@@ -2,13 +2,21 @@
   "name": "wiki",
   "version": "1.0.0",
   "description": "wiki",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -e html,js,css ./Users/kateyun/Desktop/Fullstack/Junior_Phase/Week3/wiki/app.js"
   },
   "keywords": [
     "wiki"
   ],
   "author": "Kate&Allen",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "nunjucks": "^3.1.2",
+    "pg": "^6.4.2",
+    "sequelize": "^4.37.6",
+    "volleyball": "^1.4.1"
+  }
 }
