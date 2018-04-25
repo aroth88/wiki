@@ -22,7 +22,7 @@ function urlMaker(title){
 	if (!title){
 		return Math.random().toString(36).substring(2, 15);
 	}
-	return title.replace(/\s/g, '_').replace(/\W/g, '');
+	return title.replace(/\s+/g, '_').replace(/\W/g, '');
 } 
 
 const Page = db.define('page', {
