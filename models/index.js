@@ -18,7 +18,12 @@ const db = new Sequelize('postgres://localhost:5432/wikistack', {logging: false}
 // .then(() => {
 // 	return Page.findById(1);
 // });
-
+function urlMaker(title){
+	if (!title){
+		return Math.random().toString(36).substring(2, 15);
+	}
+	return title.replace(/\s/g, '_').replace(/\W/g, '');
+} 
 
 const Page = db.define('page', {
     title: {
@@ -27,7 +32,8 @@ const Page = db.define('page', {
     },
     urlTitle: {
         type: Sequelize.STRING, 
-        allowNull: false,
+        allowNull: true,
+        // defaultValue: 'string'
         // get() {
         // 	const title = this.getDataValue('title')
         // 	return this.getDataValue('/' + title + '/')
@@ -46,6 +52,9 @@ const Page = db.define('page', {
     }
 });
 
+Page.hook('beforeValidate', (page, options) =>{
+    page.dataValues.urlTitle = urlMaker(page.dataValues.title);
+})
 const User = db.define('user', {
     name: {
         type: Sequelize.STRING, 
@@ -59,6 +68,7 @@ const User = db.define('user', {
         }
     }
 });
+
 
 module.exports = {
   Page: Page,

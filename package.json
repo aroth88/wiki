@@ -12,6 +12,7 @@
   "author": "Kate&Allen",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "nunjucks": "^3.1.2",
